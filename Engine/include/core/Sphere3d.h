@@ -23,10 +23,43 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 -----------------------------------------------------------------------------
 */
 
-#ifndef _CONFIG_H_
-#define _CONFIG_H_
+#ifndef _SPHERE_3D_H_
+#define _SPHERE_3D_H_
 
-//! Version
-#define KG_VERSION "0.0.1"
+#include <Globals.h>
 
-#endif // _CONFIG_H_
+#include <glm/glm.hpp>
+
+namespace core
+{
+
+//! Sphere
+class ENGINE_PUBLIC_EXPORT sphere3d
+{
+public:
+
+	// Constructors
+
+	sphere3d();
+	sphere3d(const glm::vec3& center, const float radius);
+	sphere3d(const sphere3d& other);
+
+	// operators
+
+	sphere3d& operator=(const sphere3d& other);
+
+	bool operator==(const sphere3d& other) const;
+	bool operator!=(const sphere3d& other) const;
+
+	// functions
+
+	inline void set(const glm::vec3 center, const float radius);
+	inline void set(const sphere3d& s);
+
+	glm::vec3 Center;
+	float Radius;
+};
+
+} // end namespace core
+
+#endif

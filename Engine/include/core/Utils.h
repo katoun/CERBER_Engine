@@ -23,10 +23,34 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 -----------------------------------------------------------------------------
 */
 
-#ifndef _CONFIG_H_
-#define _CONFIG_H_
+#ifndef _UTILS_H_
+#define _UTILS_H_
 
-//! Version
-#define KG_VERSION "0.0.1"
+#include <Globals.h>
 
-#endif // _CONFIG_H_
+#include <string>
+#include <vector>
+
+namespace core
+{
+
+inline ENGINE_PUBLIC_EXPORT void stringTrim(std::string& str, const std::string& whitespace = " \t\n", bool left = true, bool right = true);
+inline ENGINE_PUBLIC_EXPORT void stringToLower(std::string& str);
+inline ENGINE_PUBLIC_EXPORT void stringToUpper(std::string& str);
+
+inline ENGINE_PUBLIC_EXPORT int stringToInt(std::string& str);
+inline ENGINE_PUBLIC_EXPORT float stringToFloat(std::string& str);
+
+inline ENGINE_PUBLIC_EXPORT std::string intToString(unsigned int i);
+inline ENGINE_PUBLIC_EXPORT std::string intToString(int i);
+inline ENGINE_PUBLIC_EXPORT std::string floatToString(float f);
+
+inline ENGINE_PUBLIC_EXPORT void stringReplaceChar(std::string& str, const char src, const char dest);
+
+inline ENGINE_PUBLIC_EXPORT std::vector<std::string> splitString(const std::string& str, const std::string& delims = "\t\n ", unsigned int maxSplits = 0);
+
+inline ENGINE_PUBLIC_EXPORT bool powerOfTwo(unsigned int num);
+
+} // end namespace core
+
+#endif

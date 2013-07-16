@@ -23,10 +23,45 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 -----------------------------------------------------------------------------
 */
 
-#ifndef _CONFIG_H_
-#define _CONFIG_H_
+#include <core/Sphere3d.h>
+#include <core/Math.h>
 
-//! Version
-#define KG_VERSION "0.0.1"
+namespace core
+{
 
-#endif // _CONFIG_H_
+sphere3d::sphere3d(): Center(0, 0, 0), Radius(0) {}
+
+sphere3d::sphere3d(const glm::vec3& center, const float radius) : Center(center), Radius(radius) {}
+
+sphere3d::sphere3d(const sphere3d& other) : Center(other.Center), Radius(other.Radius) {}
+
+sphere3d& sphere3d::operator=(const sphere3d& other)
+{
+	Center = other.Center;
+	Radius = other.Radius;
+	return *this;
+}
+
+bool sphere3d::operator==(const sphere3d& other) const
+{
+	return ((other.Center == Center) && (other.Radius + EPSILON > Radius) && (other.Radius - EPSILON < Radius));
+}
+
+bool sphere3d::operator!=(const sphere3d& other) const
+{
+	return ((other.Center != Center) || (other.Radius + EPSILON < Radius) || (other.Radius - EPSILON > Radius));
+}
+
+inline void sphere3d::set(const glm::vec3 center, const float radius)
+{
+	Center = center;
+	Radius = radius;
+}
+
+inline void sphere3d::set(const sphere3d& s)
+{
+	Center = s.Center;
+	Radius = s.Radius;
+}
+
+} // end namespace core
