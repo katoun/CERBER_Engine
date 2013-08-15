@@ -23,3 +23,4 @@ set(CERBER_GAME_ENGINE_DEPS_DIR ${CERBERGameEngine_SOURCE_DIR}/Dependencies)
 
 # Process subdirectories
 add_subdirectory(Engine)
+add_subdirectory(Launcher)

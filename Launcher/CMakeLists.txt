@@ -1,33 +1,13 @@
-set(Engine_HDRS
-	include/Config.h
-	include/Globals.h
-	include/Engine.h
-	include/core/Aabox3d.h
-	include/core/Plane3d.h
-	include/core/Sphere3d.h
-	include/core/Math.h
-	include/core/Utils.h
-)
-
-set(Engine_SRCS
-	src/Engine.cpp
-	src/core/Aabox3d.cpp
-	src/core/Plane3d.cpp
-	src/core/Sphere3d.cpp
-	src/core/Math.cpp
-	src/core/Utils.cpp
+set(Launcher_SRCS
+	src/Launcher.cpp
 )
 
 set(CMAKE_DEBUG_POSTFIX "_d")
 
 # Specify build paths
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CERBERGameEngine_SOURCE_DIR}/Engine/lib")
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CERBERGameEngine_SOURCE_DIR}/Engine/lib")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CERBERGameEngine_SOURCE_DIR}/bin")
 
-add_library(Engine SHARED ${Engine_SRCS} ${Engine_HDRS})
-
-add_definitions(-DENGINE_DLL)
+add_executable(Launcher ${Launcher_SRCS})
 
 find_package(GLM REQUIRED)
 find_package(OpenGL REQUIRED)
@@ -50,7 +30,7 @@ include_directories(
 	${PNG_INCLUDE_DIR}
 	${BULLET_INCLUDE_DIR}
 )
-target_link_libraries(Engine
+target_link_libraries(Launcher
 	${OPENGL_LIBRARIES}
 	${OPENAL_LIBRARY}
 	${PNG_LIBRARIES}
