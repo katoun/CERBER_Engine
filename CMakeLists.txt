@@ -13,11 +13,13 @@ if (CMAKE_BUILD_TYPE STREQUAL "")
       FORCE)
 endif()
 
+# set default .cmake scripts location
 set(CMAKE_MODULE_PATH ${CERBERGameEngine_SOURCE_DIR}/CMake)
+# set default externals install location
+set(CMAKE_PREFIX_PATH ${CERBERGameEngine_SOURCE_DIR}/Dependencies)
+
 set(CERBER_GAME_ENGINE_DIR ${CERBERGameEngine_SOURCE_DIR})
 set(CERBER_GAME_ENGINE_DEPS_DIR ${CERBERGameEngine_SOURCE_DIR}/Dependencies)
-# set default externals install location
-SET(CMAKE_PREFIX_PATH ${CERBERGameEngine_SOURCE_DIR}/Dependencies)
 
 # Process subdirectories
 add_subdirectory(Engine)

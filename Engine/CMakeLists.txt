@@ -20,6 +20,11 @@ set(Engine_SRCS
 
 set(CMAKE_DEBUG_POSTFIX "_d")
 
+# Specify build paths
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CERBERGameEngine_SOURCE_DIR}/Engine/lib")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CERBERGameEngine_SOURCE_DIR}/Engine/lib")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CERBERGameEngine_SOURCE_DIR}/bin")
+
 add_library(Engine SHARED ${Engine_SRCS} ${Engine_HDRS})
 
 add_definitions(-DENGINE_DLL)
