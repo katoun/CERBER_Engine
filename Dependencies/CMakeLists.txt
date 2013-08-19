@@ -22,6 +22,7 @@ set(CERBER_GAME_ENGINE_DEPS_DOWNLOAD_DIR ${CERBERGameEngineDependencies_SOURCE_D
 set(common_deps ON)
 
 # Options for what components should be downloaded and built
+include(ExternalTinyXML)
 include(ExternalGLM)
 include(ExternalOpenAL)
 include(ExternalOggVorbis)

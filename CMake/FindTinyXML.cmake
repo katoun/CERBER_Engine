@@ -1,14 +1,13 @@
-# - Try to find PNG
+# - Try to find TinyXML
 # Once done, this will define
 #
-#  PNG_FOUND - system has PNG
-#  PNG_INCLUDE_DIR - the PNG include directory
-#  PNG_LIBRARY - link this to use PNG
+#  TINYXML_FOUND - system has TinyXML
+#  TINYXML_INCLUDE_DIR - the TinyXML include directory
+#  TINYXML_LIBRARIES - link this to use TinyXML
 
-set(PNG_SEARCH_PATHS
+set(TINYXML_SEARCH_PATHS
 	${CERBER_GAME_ENGINE_DEPS_DIR}/lib
 	${CERBER_GAME_ENGINE_DEPS_DIR}/include
-	${CERBER_GAME_ENGINE_DEPS_DIR}/include/libpng15
 )
 
 set(MSVC_YEAR_NAME)
@@ -24,8 +23,8 @@ elseif(MSVC_VERSION GREATER 1199)	# >= 1200
 	set(MSVC_YEAR_NAME VS6)
 endif()
 
-find_path(PNG_INCLUDE_DIR
-	NAMES png.h
+find_path(TINYXML_INCLUDE_DIR
+	NAMES tinyxml2.h
 	HINTS
 	NO_DEFAULT_PATH
 	NO_CMAKE_ENVIRONMENT_PATH
@@ -33,24 +32,25 @@ find_path(PNG_INCLUDE_DIR
 	NO_SYSTEM_ENVIRONMENT_PATH
 	NO_CMAKE_PATH
 	PATH_SUFFIXES include
-	PATHS ${PNG_SEARCH_PATHS}
+	PATHS ${TINYXML_SEARCH_PATHS}
 )
 
-find_library(PNG_LIBRARY 
-	NAMES png libpng png15 libpng15 libpng15_static
+find_library(TINYXML_LIBRARY 
+	NAMES tinyxml2
 	HINTS
 	NO_DEFAULT_PATH
 	NO_CMAKE_ENVIRONMENT_PATH
 	NO_CMAKE_SYSTEM_PATH
 	NO_SYSTEM_ENVIRONMENT_PATH
 	NO_CMAKE_PATH
-	PATH_SUFFIXES lib lib64 win32/Dynamic_Release "Win32/${MSVC_YEAR_NAME}/x64/Release" "Win32/${MSVC_YEAR_NAME}/Win32/Release"
-	PATHS ${PNG_SEARCH_PATHS}
+	PATH_SUFFIXES lib lib64 win32/Dynamic_Release "Win32/${MSVC_YEAR_NAME}/x64/Debug" "Win32/${MSVC_YEAR_NAME}/Win32/Debug"
+	PATHS ${TINYXML_SEARCH_PATHS}
 )
 
+
 # First search for d-suffixed libs
-find_library(PNG_LIBRARY_DEBUG 
-	NAMES pngd libpngd png15d libpng15d libpng15_staticd
+find_library(TINYXML_LIBRARY_DEBUG 
+	NAMES tinyxml2d
 	HINTS
 	NO_DEFAULT_PATH
 	NO_CMAKE_ENVIRONMENT_PATH
@@ -58,13 +58,13 @@ find_library(PNG_LIBRARY_DEBUG
 	NO_SYSTEM_ENVIRONMENT_PATH
 	NO_CMAKE_PATH
 	PATH_SUFFIXES lib lib64 win32/Dynamic_Debug "Win32/${MSVC_YEAR_NAME}/x64/Debug" "Win32/${MSVC_YEAR_NAME}/Win32/Debug"
-	PATHS ${PNG_SEARCH_PATHS}
+	PATHS ${TINYXML_SEARCH_PATHS}
 )
 
-if(NOT PNG_LIBRARY_DEBUG)
+if(NOT TINYXML_LIBRARY_DEBUG)
 	# Then search for non suffixed libs if necessary, but only in debug dirs
-	find_library(PNG_LIBRARY_DEBUG 
-		NAMES png libpng png15 libpng15 libpng15_static
+	find_library(TINYXML_LIBRARY_DEBUG 
+		NAMES tinyxml2d
 		HINTS
 		NO_DEFAULT_PATH
 		NO_CMAKE_ENVIRONMENT_PATH
@@ -72,18 +72,18 @@ if(NOT PNG_LIBRARY_DEBUG)
 		NO_SYSTEM_ENVIRONMENT_PATH
 		NO_CMAKE_PATH
 		PATH_SUFFIXES win32/Dynamic_Debug "Win32/${MSVC_YEAR_NAME}/x64/Debug" "Win32/${MSVC_YEAR_NAME}/Win32/Debug"
-		PATHS ${PNG_SEARCH_PATHS}
+		PATHS ${TINYXML_SEARCH_PATHS}
 	)
 endif()
 
-if(PNG_LIBRARY)
-	if(PNG_LIBRARY_DEBUG)
-		set(PNG_LIBRARIES optimized "${PNG_LIBRARY}" debug "${PNG_LIBRARY_DEBUG}")
+if(TINYXML_LIBRARY)
+	if(TINYXML_LIBRARY_DEBUG)
+		set(TINYXML_LIBRARIES optimized "${TINYXML_LIBRARY}" debug "${TINYXML_LIBRARY_DEBUG}")
 	else()
-		set(PNG_LIBRARIES "${PNG_LIBRARY}")		# Could add "general" keyword, but it is optional
+		set(TINYXML_LIBRARIES "${TINYXML_LIBRARY}")		# Could add "general" keyword, but it is optional
 	endif()
 endif()
 
 # handle the QUIETLY and REQUIRED arguments and set XXX_FOUND to TRUE if all listed variables are TRUE
 include(FindPackageHandleStandardArgs)
-find_package_handle_standard_args(PNG DEFAULT_MSG PNG_LIBRARIES PNG_INCLUDE_DIR)
+find_package_handle_standard_args(TINYXML DEFAULT_MSG TINYXML_LIBRARIES TINYXML_INCLUDE_DIR)
