@@ -16,8 +16,8 @@ set(assimp_CMAKE_ARGS
 
 if (APPLE)
     # Work around a compiler crash building assimp on Mac
-    STRING(REPLACE "-O3" "-O2" assimp_CXX_FLAGS ${CMAKE_CXX_FLAGS_RELEASE})
-    LIST(APPEND assimp_CMAKE_ARGS -DCMAKE_CXX_FLAGS_RELEASE=${assimp_CXX_FLAGS})
+    string(REPLACE "-O3" "-O2" assimp_CXX_FLAGS ${CMAKE_CXX_FLAGS_RELEASE})
+    list(APPEND assimp_CMAKE_ARGS -DCMAKE_CXX_FLAGS_RELEASE=${assimp_CXX_FLAGS})
 endif()
 
 ExternalProject_Add(assimp

@@ -1,9 +1,9 @@
 # Build a local version
-INCLUDE(ExternalProject)
+include(ExternalProject)
 
-SET(openal_PREFIX ${CMAKE_CURRENT_BINARY_DIR}/openal)
+set(openal_PREFIX ${CMAKE_CURRENT_BINARY_DIR}/openal)
 
-SET(openal_CMAKE_ARGS
+set(openal_CMAKE_ARGS
     -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR> 
     -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
     -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}
