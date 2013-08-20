@@ -8,7 +8,7 @@
 set(PNG_SEARCH_PATHS
 	${CERBER_GAME_ENGINE_DEPS_DIR}/lib
 	${CERBER_GAME_ENGINE_DEPS_DIR}/include
-	${CERBER_GAME_ENGINE_DEPS_DIR}/include/libpng15
+	${CERBER_GAME_ENGINE_DEPS_DIR}/include/libpng16
 )
 
 set(MSVC_YEAR_NAME)
@@ -37,7 +37,7 @@ find_path(PNG_INCLUDE_DIR
 )
 
 find_library(PNG_LIBRARY 
-	NAMES png libpng png15 libpng15 libpng15_static
+	NAMES png libpng png16 libpng16 libpng16_static
 	HINTS
 	NO_DEFAULT_PATH
 	NO_CMAKE_ENVIRONMENT_PATH
@@ -50,7 +50,7 @@ find_library(PNG_LIBRARY
 
 # First search for d-suffixed libs
 find_library(PNG_LIBRARY_DEBUG 
-	NAMES pngd libpngd png15d libpng15d libpng15_staticd
+	NAMES pngd libpngd png16d libpng16d libpng16_staticd
 	HINTS
 	NO_DEFAULT_PATH
 	NO_CMAKE_ENVIRONMENT_PATH
@@ -64,7 +64,7 @@ find_library(PNG_LIBRARY_DEBUG
 if(NOT PNG_LIBRARY_DEBUG)
 	# Then search for non suffixed libs if necessary, but only in debug dirs
 	find_library(PNG_LIBRARY_DEBUG 
-		NAMES png libpng png15 libpng15 libpng15_static
+		NAMES png libpng png16 libpng16 libpng16_static
 		HINTS
 		NO_DEFAULT_PATH
 		NO_CMAKE_ENVIRONMENT_PATH
