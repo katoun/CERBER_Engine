@@ -14,8 +14,8 @@ EXTERNALPROJECT_ADD(freetype
     PREFIX ${freetype_PREFIX}
 
     DOWNLOAD_DIR ${CERBER_GAME_ENGINE_DEPS_DOWNLOAD_DIR}
-    URL http://download.savannah.gnu.org/releases/freetype/freetype-2.4.5.tar.gz
-    URL_MD5 0e67460b312df905dc1cc1586690e7b2
+    URL http://download.savannah.gnu.org/releases/freetype/freetype-2.4.12.tar.gz
+    URL_MD5 e3057079a9bb96d7ebf9afee3f724653
 
     PATCH_COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CERBERGameEngineDependencies_SOURCE_DIR}/../CMake/freetype.cmake <SOURCE_DIR>/CMakeLists.txt
 

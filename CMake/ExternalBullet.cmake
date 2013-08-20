@@ -25,9 +25,9 @@ ExternalProject_Add(bullet
     PREFIX ${bullet_PREFIX}
     
     DOWNLOAD_DIR ${CERBER_GAME_ENGINE_DEPS_DOWNLOAD_DIR}
-
-    URL http://bullet.googlecode.com/files/bullet-2.78.zip
-    URL_MD5 99d4070864c9f73521481ba9cda25038
+	
+	SVN_REPOSITORY http://bullet.googlecode.com/svn/trunk
+	SVN_REVISION -r "2644"
 
     INSTALL_DIR ${CERBER_GAME_ENGINE_DEPS_DIR} 
     CMAKE_ARGS ${bullet_CMAKE_ARGS}

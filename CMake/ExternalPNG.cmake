@@ -9,6 +9,7 @@ set(libpng_CMAKE_ARGS
 	-DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}
     -DCMAKE_OSX_ARCHITECTURES=${CMAKE_OSX_ARCHITECTURES}
     -DPNG_SHARED=OFF
+	-DPNG_STATIC=ON
     -DBUILD_SHARED_LIBS=FALSE
     -DSKIP_INSTALL_FILES=1
 )
@@ -41,8 +42,8 @@ EXTERNALPROJECT_ADD(libpng
     PREFIX ${libpng_PREFIX}
 
     DOWNLOAD_DIR ${CERBER_GAME_ENGINE_DEPS_DOWNLOAD_DIR}
-    URL ftp://ftp.simplesystems.org/pub/libpng/png/src/history/libpng15/libpng-1.5.10.tar.gz
-    URL_MD5 9e5d864bce8f06751bbd99962ecf4aad
+    URL ftp://ftp.simplesystems.org/pub/libpng/png/src/history/libpng16/libpng-1.6.2.tar.gz
+    URL_MD5 b9f33116aafde244d04caf1ee19eb573
 
     INSTALL_DIR ${CERBER_GAME_ENGINE_DEPS_DIR}
     CMAKE_ARGS ${libpng_CMAKE_ARGS} -DCMAKE_PREFIX_PATH=${install_dir} # to find zlib

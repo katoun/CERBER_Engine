@@ -15,8 +15,8 @@ ExternalProject_Add(glew
     
     DOWNLOAD_DIR ${CERBER_GAME_ENGINE_DEPS_DOWNLOAD_DIR}
 
-    URL http://sourceforge.net/projects/glew/files/glew/1.9.0/glew-1.9.0.tgz
-    URL_MD5 69ce911decef6249d24742497e6ad06a
+    URL http://sourceforge.net/projects/glew/files/glew/1.10.0/glew-1.10.0.tgz
+    URL_MD5 2f09e5e6cb1b9f3611bcac79bc9c2d5d
 	
 	PATCH_COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CERBERGameEngineDependencies_SOURCE_DIR}/../CMake/glew.cmake <SOURCE_DIR>/CMakeLists.txt && ${CMAKE_COMMAND} -E copy_if_different ${CERBERGameEngineDependencies_SOURCE_DIR}/../CMake/glew_patch/glew.rc <SOURCE_DIR>/build/glew.rc
 
