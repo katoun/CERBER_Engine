@@ -18,7 +18,7 @@ ExternalProject_Add(recast
 	SVN_REPOSITORY http://recastnavigation.googlecode.com/svn/trunk
 	SVN_REVISION -r "351"
 	
-	PATCH_COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CERBERGameEngineDependencies_SOURCE_DIR}/../CMake/tinyXML.cmake <SOURCE_DIR>/CMakeLists.txt
+	PATCH_COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CERBERGameEngineDependencies_SOURCE_DIR}/../CMake/recast.cmake <SOURCE_DIR>/CMakeLists.txt && ${CMAKE_COMMAND} -E copy_if_different ${CERBERGameEngineDependencies_SOURCE_DIR}/../CMake/recast_patch/Detour/CMakeLists.cmake <SOURCE_DIR>/Detour/CMakeLists.txt && ${CMAKE_COMMAND} -E copy_if_different ${CERBERGameEngineDependencies_SOURCE_DIR}/../CMake/recast_patch/DetourCrowd/CMakeLists.cmake <SOURCE_DIR>/DetourCrowd/CMakeLists.txt && ${CMAKE_COMMAND} -E copy_if_different ${CERBERGameEngineDependencies_SOURCE_DIR}/../CMake/recast_patch/DetourTileCache/CMakeLists.cmake <SOURCE_DIR>/DetourTileCache/CMakeLists.txt && ${CMAKE_COMMAND} -E copy_if_different ${CERBERGameEngineDependencies_SOURCE_DIR}/../CMake/recast_patch/Recast/CMakeLists.cmake <SOURCE_DIR>/Recast/CMakeLists.txt
 
     INSTALL_DIR ${CERBER_GAME_ENGINE_DEPS_DIR} 
     CMAKE_ARGS ${recast_CMAKE_ARGS}

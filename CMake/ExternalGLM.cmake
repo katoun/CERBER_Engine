@@ -15,8 +15,8 @@ ExternalProject_Add(glm
     
     DOWNLOAD_DIR ${CERBER_GAME_ENGINE_DEPS_DOWNLOAD_DIR}
 
-    URL http://sourceforge.net/projects/ogl-math/files/glm-0.9.4.4/glm-0.9.4.4.zip
-    URL_MD5 3118904f39befdb7063168316b6a33f1
+	GIT_REPOSITORY https://github.com/g-truc/glm.git
+	GIT_TAG "6c1eb888cedcd7545fe84fffe5b78a0a6a8e6a99"
 	
 	PATCH_COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CERBERGameEngineDependencies_SOURCE_DIR}/../CMake/glm.cmake <SOURCE_DIR>/CMakeLists.txt
 
