@@ -17,7 +17,7 @@ ExternalProject_Add(tinyXML
     DOWNLOAD_DIR ${CERBER_GAME_ENGINE_DEPS_DOWNLOAD_DIR}
 	
 	GIT_REPOSITORY https://github.com/leethomason/tinyxml2.git
-	GIT_TAG 03238517b3718f0c977bb061747faa8ebfc4fb44
+	GIT_TAG "03238517b3718f0c977bb061747faa8ebfc4fb44"
 	
 	PATCH_COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CERBERGameEngineDependencies_SOURCE_DIR}/../CMake/tinyXML.cmake <SOURCE_DIR>/CMakeLists.txt
 
