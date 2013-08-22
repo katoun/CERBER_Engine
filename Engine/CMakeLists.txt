@@ -31,6 +31,7 @@ add_definitions(-DENGINE_DLL)
 
 find_package(GLM REQUIRED)
 find_package(OpenGL REQUIRED)
+find_package(GLEW REQUIRED)
 find_package(ZLIB REQUIRED)
 find_package(PNG REQUIRED)
 find_package(OpenAL REQUIRED)
@@ -44,6 +45,7 @@ include_directories(
 	${CERBERGameEngine_SOURCE_DIR}/Engine/include
 	${GLM_INCLUDE_DIR}
 	${OPENGL_INCLUDE_DIR}
+	${GLEW_INCLUDE_DIR}
 	${OPENAL_INCLUDE_DIR}
 	${OGG_INCLUDE_DIR}
 	${VORBISFILE_INCLUDE_DIR}
@@ -52,6 +54,7 @@ include_directories(
 )
 target_link_libraries(Engine
 	${OPENGL_LIBRARIES}
+	${GLEW_LIBRARIES}
 	${OPENAL_LIBRARY}
 	${PNG_LIBRARIES}
 	${OGG_LIBRARIES}
