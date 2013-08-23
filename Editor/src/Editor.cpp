@@ -60,7 +60,7 @@ enum
 
 	ID_COUNT
 };
-/*
+
 class MainFrame: public wxFrame
 {
 public:
@@ -354,7 +354,7 @@ MainFrame::~MainFrame()
 
 	mAuiManager.UnInit();
 }
-*/
+
 class EditorApp: public wxApp
 {
 public:
@@ -374,9 +374,9 @@ bool EditorApp::OnInit()
 {
 	wxApp::OnInit();
 
-	/*MainFrame* frame = new MainFrame(NULL);
+	MainFrame* frame = new MainFrame(NULL);
 	frame->SetIcon(wxICON(amain));
-	frame->Show();*/
+	frame->Show();
 
 	return true;
 }
