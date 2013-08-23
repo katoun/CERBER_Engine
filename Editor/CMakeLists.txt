@@ -65,4 +65,10 @@ target_link_libraries(Editor
 	#${VORBISFILE_LIBRARIES}
 	#${BULLET_LIBRARIES}
 	${EXTRA_LIBS}
+	#TODO: fix this
+	comctl32.lib
+	rpcrt4.lib
+	winmm.lib
+	wsock32.lib
+	#TODO: fix this
 )
