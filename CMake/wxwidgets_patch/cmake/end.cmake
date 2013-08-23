@@ -1,11 +1,17 @@
 macro(add_wxlib LIB_MNAME LIB_MCSOURCES LIB_MHHEADERS LIB_MPREFIX LIB_MEL PROJECT_MNAME)
 #${wxRELEASE_NUMBER}
     set(LIB_MOUTNAME wx${LIB_MPREFIX}${wxMAJOR_VERSION}${wxMINOR_VERSION}u)
-    
+   
     if(WIN32)
-      # Postfix of DLLs:
-      set(LIB_DEBUG_POSTFIX d${LIB_MEL}_vc_custom)
-      set(LIB_RELEASE_POSTFIX ${LIB_MEL}_vc_custom)
+		if(WX_SHARED)
+		  # Postfix of DLLs:
+		  set(LIB_DEBUG_POSTFIX d${LIB_MEL}_vc_custom)
+		  set(LIB_RELEASE_POSTFIX ${LIB_MEL}_vc_custom)
+		else(WX_SHARED)
+			# Postfix of libs:
+		  set(LIB_DEBUG_POSTFIX d${LIB_MEL})
+		  set(LIB_RELEASE_POSTFIX ${LIB_MEL})
+		endif(WX_SHARED)
     else(WIN32)
       # Postfix of so's:
       set(LIB_DEBUG_POSTFIX)

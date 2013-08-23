@@ -36,7 +36,7 @@ find_path(wxWidgets_INCLUDE_DIR
 )
 
 find_library(WX_base 
-	NAMES wxbase29u_vc_custom
+	NAMES wxbase29u
 	HINTS
 	NO_DEFAULT_PATH
 	NO_CMAKE_ENVIRONMENT_PATH
@@ -51,7 +51,7 @@ set(wxWidgets_LIBRARIES "")
 
 foreach(LIB core adv aui propgrid)
     find_library(WX_${LIB}
-		NAMES wxmsw29u_${LIB}_vc_custom
+		NAMES wxmsw29u_${LIB}
 		HINTS
 		NO_DEFAULT_PATH
 		NO_CMAKE_ENVIRONMENT_PATH
@@ -64,7 +64,7 @@ foreach(LIB core adv aui propgrid)
 	
 	# First search for d-suffixed libs
 	find_library(WX_${LIB}_DEBUG 
-		NAMES wxmsw29ud_${LIB}_vc_custom
+		NAMES wxmsw29ud_${LIB}
 		HINTS
 		NO_DEFAULT_PATH
 		NO_CMAKE_ENVIRONMENT_PATH
@@ -78,7 +78,7 @@ foreach(LIB core adv aui propgrid)
 	if(NOT WX_${LIB}_DEBUG)
 		# Then search for non suffixed libs if necessary, but only in debug dirs
 		find_library(WX_${LIB}_DEBUG
-			NAMES wxmsw29u_${LIB}_vc_custom
+			NAMES wxmsw29u_${LIB}
 			HINTS
 			NO_DEFAULT_PATH
 			NO_CMAKE_ENVIRONMENT_PATH
