@@ -12,12 +12,12 @@ set(COMMON_CSOURCES
     )
 source_group("Common Sources" FILES ${COMMON_CSOURCES})
 
-set( MSW_HEADERS
+set(MSW_HEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/genrcdefs.h
     )
 source_group("MSW Headers" FILES ${MSW_HEADERS})
 
-set( MSW_CSOURCES
+set(MSW_CSOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/src/msw/version.rc
     )
 source_group("MSW Sources" FILES ${MSW_CSOURCES})
@@ -58,4 +58,6 @@ install(TARGETS
     ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib)
 	
-install(FILES ${PROJECT_HHEADERS} DESTINATION include)
+install(FILES ${COMMON_HHEADERS} DESTINATION include/wx/aui)
+install(FILES ${MSW_HEADERS} DESTINATION include/wx/msw)
+install(FILES ${SETUP_HHEADERS} DESTINATION include/wx/msw)

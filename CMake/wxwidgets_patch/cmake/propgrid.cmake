@@ -60,4 +60,6 @@ install(TARGETS
     ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib)
 	
-install(FILES ${PROJECT_HHEADERS} DESTINATION include)
+install(FILES ${MSW_HHEADERS} DESTINATION include/wx/msw)
+install(FILES ${COMMON_HHEADERS} DESTINATION include/wx/propgrid)
+install(FILES ${SETUP_HHEADERS} DESTINATION include/wx/msw)

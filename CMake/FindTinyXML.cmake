@@ -64,7 +64,7 @@ find_library(TINYXML_LIBRARY_DEBUG
 if(NOT TINYXML_LIBRARY_DEBUG)
 	# Then search for non suffixed libs if necessary, but only in debug dirs
 	find_library(TINYXML_LIBRARY_DEBUG 
-		NAMES tinyxml2d
+		NAMES tinyxml2
 		HINTS
 		NO_DEFAULT_PATH
 		NO_CMAKE_ENVIRONMENT_PATH

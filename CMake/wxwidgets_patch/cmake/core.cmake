@@ -349,13 +349,10 @@ set(wxUniv_CSOURCES
     )
 source_group("wxUniv Sources" FILES ${wxUniv_CSOURCES})
 
-set(MSW_HHEADERS
+set(MSW_MAIN_HHEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/accel.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/ole/access.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/ole/activex.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/anybutton.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/app.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/ole/automtn.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/bitmap.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/bmpbuttn.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/bmpcbox.h
@@ -376,9 +373,6 @@ set(MSW_HHEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/ctrlsub.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/cursor.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/custombgwin.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/ole/dataform.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/ole/dataobj.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/ole/dataobj2.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/datectrl.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/datetimectrl.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/dc.h
@@ -390,8 +384,6 @@ set(MSW_HHEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/dib.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/dirdlg.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/dragimag.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/ole/dropsrc.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/ole/droptgt.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/enhmeta.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/evtloop.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/fdrepdlg.h
@@ -427,7 +419,6 @@ set(MSW_HHEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/nonownedwnd.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/notebook.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/notifmsg.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/ole/oleutils.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/ownerdrw.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/palette.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/panel.h
@@ -460,13 +451,29 @@ set(MSW_HHEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/tooltip.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/toplevel.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/treectrl.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/ole/uuid.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/uxtheme.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/uxthemep.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/webview_ie.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/webviewhistoryitem_ie.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/window.h
-)    
+)
+
+set(MSW_OLE_HHEADERS	
+	#OLE
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/ole/access.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/ole/activex.h
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/ole/automtn.h
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/ole/dataform.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/ole/dataobj.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/ole/dataobj2.h
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/ole/dropsrc.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/ole/droptgt.h
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/ole/oleutils.h
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/ole/uuid.h
+	#OLE
+)   
+
+set(MSW_HHEADERS ${MSW_MAIN_HHEADERS} ${MSW_OLE_HHEADERS}) 
 source_group("MSW Headers" FILES ${MSW_HHEADERS})
 
 set(GEN_HHEADERS
@@ -603,34 +610,25 @@ set(wxHTML_HHEADERS
 )
 source_group("wxHTML Headers" FILES ${wxHTML_HHEADERS}) 
 
-set(COMMON_HHEADERS
+set(COMMON_MAIN_HHEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/aboutdlg.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/accel.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/access.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/propgrid/advprops.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/affinematrix2d.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/affinematrix2dbase.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/anidecod.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/animate.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/animdecod.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/anybutton.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/ribbon/art.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/ribbon/art_internal.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/artprov.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/aui/aui.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/aui/auibar.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/aui/auibook.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/bannerwindow.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/ribbon/bar.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/bitmap.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/bmpbuttn.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/bmpcbox.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/bookctrl.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/persist/bookctrl.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/brush.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/busyinfo.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/button.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/ribbon/buttonbar.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/cairo.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/calctrl.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/caret.h
@@ -652,7 +650,6 @@ set(COMMON_HHEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/commandlinkbutton.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/compositewin.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/control.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/ribbon/control.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/cshelp.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/ctrlsub.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/cursor.h
@@ -680,13 +677,11 @@ set(COMMON_HHEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/display.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/display_impl.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/dnd.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/aui/dockart.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/docmdi.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/docview.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/dragimag.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/dvrenderers.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/editlbox.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/propgrid/editors.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/effects.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/encinfo.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/evtloopsrc.h
@@ -695,7 +690,6 @@ set(COMMON_HHEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/filedlg.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/filehistory.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/filepicker.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/aui/floatpane.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/fmappriv.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/font.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/fontdata.h
@@ -704,8 +698,6 @@ set(COMMON_HHEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/fontpicker.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/fontutil.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/frame.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/aui/framemanager.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/ribbon/gallery.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/gauge.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/gbsizer.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/gdicmn.h
@@ -746,7 +738,6 @@ set(COMMON_HHEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/listbook.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/listbox.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/listctrl.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/propgrid/manager.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/matrix.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/mdi.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/mediactrl.h
@@ -764,10 +755,8 @@ set(COMMON_HHEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/odcombo.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/overlay.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/ownerdrw.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/ribbon/page.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/palette.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/panel.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/ribbon/panel.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/paper.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/pen.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/persist.h
@@ -779,12 +768,6 @@ set(COMMON_HHEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/prntbase.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/progdlg.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/propdlg.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/propgrid/property.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/propgrid/propgrid.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/propgrid/propgriddefs.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/propgrid/propgridiface.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/propgrid/propgridpagestate.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/propgrid/props.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/quantize.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/radiobox.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/radiobut.h
@@ -794,7 +777,69 @@ set(COMMON_HHEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/region.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/renderer.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/richmsgdlg.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/richtext/richtextbackgroundpage.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/richtooltip.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/sashwin.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/scopeguard.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/scrolbar.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/scrolwin.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/selstore.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/settings.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/sizer.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/slider.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/sound.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/spinbutt.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/spinctrl.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/splash.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/splitter.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/srchctrl.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/statbmp.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/statbox.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/statline.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/stattext.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/statusbr.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/taskbar.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/tbarbase.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/textcompleter.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/textctrl.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/textdlg.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/textentry.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/textwrapper.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/tglbtn.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/timectrl.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/tipdlg.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/tipwin.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/toolbar.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/toolbook.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/tooltip.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/toplevel.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/treebase.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/treebook.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/treectrl.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/treelist.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/uiaction.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/valgen.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/validate.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/valnum.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/valtext.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/vidmode.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/vlbox.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/vms_x_fix.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/vscroll.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/webview.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/webviewarchivehandler.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/window.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/windowid.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/withimages.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/wizard.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/wrapsizer.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/wupdlock.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/wxhtml.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/xpmdecod.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/xpmhand.h
+)
+
+set(COMMON_RICHTEXT_HHEADERS	
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/richtext/richtextbackgroundpage.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/richtext/richtextborderspage.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/richtext/richtextbuffer.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/richtext/richtextbulletspage.h
@@ -815,72 +860,57 @@ set(COMMON_HHEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/richtext/richtextsymboldlg.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/richtext/richtextuicustomization.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/richtext/richtextxml.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/richtooltip.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/sashwin.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/scopeguard.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/scrolbar.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/scrolwin.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/selstore.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/settings.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/sizer.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/slider.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/sound.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/spinbutt.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/spinctrl.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/splash.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/persist/splitter.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/splitter.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/srchctrl.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/statbmp.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/statbox.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/statline.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/stattext.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/statusbr.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/stc/stc.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/aui/tabart.h
+)
+
+set(COMMON_STC_HHEADERS	
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/stc/stc.h
+)
+
+set(COMMON_AUI_HHEADERS
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/aui/aui.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/aui/auibar.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/aui/auibook.h
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/aui/dockart.h
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/aui/floatpane.h
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/aui/framemanager.h
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/aui/tabart.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/aui/tabmdi.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/taskbar.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/tbarbase.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/textcompleter.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/textctrl.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/textdlg.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/textentry.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/textwrapper.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/tglbtn.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/timectrl.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/tipdlg.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/tipwin.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/ribbon/toolbar.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/toolbar.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/toolbook.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/tooltip.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/persist/toplevel.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/toplevel.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/treebase.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/persist/treebook.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/treebook.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/treectrl.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/treelist.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/uiaction.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/valgen.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/validate.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/valnum.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/valtext.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/vidmode.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/vlbox.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/vms_x_fix.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/vscroll.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/webview.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/webviewarchivehandler.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/persist/window.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/window.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/windowid.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/withimages.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/wizard.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/wrapsizer.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/wupdlock.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/wxhtml.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/xrc/xh_all.h
+)
+
+set(COMMON_RIBBON_HHEADERS	
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/ribbon/art.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/ribbon/art_internal.h
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/ribbon/bar.h
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/ribbon/control.h
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/ribbon/buttonbar.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/ribbon/gallery.h
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/ribbon/page.h
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/ribbon/panel.h
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/ribbon/toolbar.h
+)
+
+set(COMMON_PROPGRID_HHEADERS
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/propgrid/editors.h
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/propgrid/manager.h
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/propgrid/property.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/propgrid/propgrid.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/propgrid/propgriddefs.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/propgrid/propgridiface.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/propgrid/propgridpagestate.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/propgrid/props.h
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/propgrid/advprops.h
+)
+
+set(COMMON_PERSIST_HHEADERS	
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/persist/bookctrl.h
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/persist/splitter.h
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/persist/treebook.h
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/persist/toplevel.h
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/persist/window.h
+)
+
+set(COMMON_XRC_HHEADERS	
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/xrc/xh_all.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/xrc/xh_animatctrl.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/xrc/xh_bannerwindow.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/xrc/xh_bmp.h
@@ -944,9 +974,9 @@ set(COMMON_HHEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/xrc/xh_unkwn.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/xrc/xh_wizrd.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/xrc/xmlres.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/xpmdecod.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/xpmhand.h
 )
+
+set(COMMON_HHEADERS ${COMMON_MAIN_HHEADERS} ${COMMON_RICHTEXT_HHEADERS} ${COMMON_STC_HHEADERS} ${COMMON_AUI_HHEADERS} ${COMMON_RIBBON_HHEADERS} ${COMMON_PROPGRID_HHEADERS} ${COMMON_PERSIST_HHEADERS} ${COMMON_XRC_HHEADERS}) 
 source_group("Common Headers" FILES ${COMMON_HHEADERS})    
 
 set(SETUP_HHEADERS
@@ -974,5 +1004,18 @@ install(TARGETS
     RUNTIME DESTINATION bin
     ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib)
-	
-install(FILES ${PROJECT_HHEADERS} DESTINATION include)
+
+install(FILES ${MSW_MAIN_HHEADERS} DESTINATION include/wx/msw)
+install(FILES ${MSW_OLE_HHEADERS} DESTINATION include/wx/msw/ole)
+install(FILES ${GEN_HHEADERS} DESTINATION include/wx/generic)
+install(FILES ${wxUniv_HHEADERS} DESTINATION include/wx/univ)
+install(FILES ${wxHTML_HHEADERS} DESTINATION include/wx/html)
+install(FILES ${COMMON_MAIN_HHEADERS} DESTINATION include/wx)
+install(FILES ${COMMON_RICHTEXT_HHEADERS} DESTINATION include/wx/richtext)
+install(FILES ${COMMON_STC_HHEADERS} DESTINATION include/wx/stc)
+install(FILES ${COMMON_AUI_HHEADERS} DESTINATION include/wx/aui)
+install(FILES ${COMMON_RIBBON_HHEADERS} DESTINATION include/wx/ribbon)
+install(FILES ${COMMON_PROPGRID_HHEADERS} DESTINATION include/wx/propgrid)
+install(FILES ${COMMON_PERSIST_HHEADERS} DESTINATION include/wx/persist)
+install(FILES ${COMMON_XRC_HHEADERS} DESTINATION include/wx)
+install(FILES ${SETUP_HHEADERS} DESTINATION include/wx/msw)

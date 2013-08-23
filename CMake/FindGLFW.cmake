@@ -64,7 +64,7 @@ find_library(GLFW_LIBRARY_DEBUG
 if(NOT GLFW_LIBRARY_DEBUG)
 	# Then search for non suffixed libs if necessary, but only in debug dirs
 	find_library(GLFW_LIBRARY_DEBUG 
-		NAMES glfw3d
+		NAMES glfw3
 		HINTS
 		NO_DEFAULT_PATH
 		NO_CMAKE_ENVIRONMENT_PATH

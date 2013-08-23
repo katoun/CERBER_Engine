@@ -19,10 +19,13 @@ set(MSW_HHEADERS
     )    
 source_group("MSW Headers" FILES ${MSW_HHEADERS})
 
-set(COMMON_HHEADERS
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/xml/xml.h
+set(COMMON_MAIN_HHEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/xtixml.h
+)
+set(COMMON_XML_HHEADERS
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/xml/xml.h
     )
+set(COMMON_HHEADERS ${COMMON_MAIN_HHEADERS} ${COMMON_XML_HHEADERS})
 source_group("Common Headers" FILES ${COMMON_HHEADERS})    
 
 set(SETUP_HHEADERS
@@ -49,5 +52,8 @@ install(TARGETS
     RUNTIME DESTINATION bin
     ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib)
-	
-install(FILES ${PROJECT_HHEADERS} DESTINATION include)
+
+install(FILES ${MSW_HHEADERS} DESTINATION include/wx/msw)
+install(FILES ${COMMON_MAIN_HHEADERS} DESTINATION include/wx)
+install(FILES ${COMMON_XML_HHEADERS} DESTINATION include/wx/xml)
+install(FILES ${SETUP_HHEADERS} DESTINATION include/wx/msw)

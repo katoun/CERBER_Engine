@@ -66,53 +66,25 @@ if(UNIX)
      endif()
 endif()
 
-set (CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${WX_OUTPUT_PATH} CACHE PATH "Single Directory for all Executables.")
-set (CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG ${WX_OUTPUT_PATH} CACHE PATH "Single Directory for all Libraries")
-set (CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG ${WX_OUTPUT_PATH} CACHE PATH "Single Directory for all static libraries.")
-set (CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${WX_OUTPUT_PATH} CACHE PATH "Single Directory for all Executables.")
-set (CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE ${WX_OUTPUT_PATH} CACHE PATH "Single Directory for all Libraries")
-set (CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${WX_OUTPUT_PATH} CACHE PATH "Single Directory for all static libraries.")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${WX_OUTPUT_PATH} CACHE PATH "Single Directory for all Executables.")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG ${WX_OUTPUT_PATH} CACHE PATH "Single Directory for all Libraries")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG ${WX_OUTPUT_PATH} CACHE PATH "Single Directory for all static libraries.")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${WX_OUTPUT_PATH} CACHE PATH "Single Directory for all Executables.")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE ${WX_OUTPUT_PATH} CACHE PATH "Single Directory for all Libraries")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${WX_OUTPUT_PATH} CACHE PATH "Single Directory for all static libraries.")
 
 include(end)
-#regex
-include( regex )
-
-#expat
-include( expat )
-
-#tiff
-include( tiff )
-
-#jpeg
-include( jpeg )
-
-#zlib
-include( zlib )
-
-#png
-include( png )
-
-#base
-include( base )
-
-#core
-include( core )
-
-#net
-include( net )
-
-#xml
-include( xml )
-
-#html
-include( html )
-
-#adv
-include( adv )
-
-#propgrid
-include( propgrid )
-
-#aui
-include( aui )
-
+include(regex)
+include(expat)
+include(tiff)
+include(jpeg)
+include(zlib)
+include(png)
+include(base)
+include(core)
+include(net)
+include(xml)
+include(html)
+include(adv)
+include(propgrid)
+include(aui)

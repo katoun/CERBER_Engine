@@ -155,7 +155,7 @@ set(MSW_HHEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/winundef.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/wrapcctl.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/wrapcdlg.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/wrapwin.h   
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/wrapwin.h  
     )    
 source_group("MSW Headers" FILES ${MSW_HHEADERS})
 
@@ -169,7 +169,7 @@ set(WXH_HHEADERS
     )    
 source_group("wxHTML Headers" FILES ${WXH_HHEADERS})  
 
-set(COMMON_HHEADERS
+set(COMMON_MAIN_HHEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/afterstd.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/any.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/anystr.h
@@ -192,7 +192,6 @@ set(COMMON_HHEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/config.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/containr.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/convauto.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/meta/convertible.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/cpp.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/crt.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/datetime.h
@@ -230,10 +229,7 @@ set(COMMON_HHEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/hashmap.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/hashset.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/iconloc.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/meta/if.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/meta/implicitconversion.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/init.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/meta/int2type.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/intl.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/iosfwrap.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/ioswrap.h
@@ -252,7 +248,6 @@ set(COMMON_HHEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/mimetype.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/module.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/mousestate.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/meta/movable.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msgout.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msgqueue.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/mstream.h
@@ -260,7 +255,6 @@ set(COMMON_HHEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/object.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/platform.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/platinfo.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/meta/pod.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/power.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/process.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/ptr_scpd.h
@@ -328,6 +322,16 @@ set(COMMON_HHEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/zipstrm.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/zstream.h
 )
+
+set(COMMON_META_HHEADERS	
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/meta/convertible.h
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/meta/if.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/meta/implicitconversion.h
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/meta/int2type.h
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/meta/movable.h
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/meta/pod.h
+)
+set(COMMON_HHEADERS ${COMMON_MAIN_HHEADERS} ${COMMON_META_HHEADERS}) 
 source_group("Common Headers" FILES ${COMMON_HHEADERS})    
 
 set(SETUP_HHEADERS
@@ -355,4 +359,9 @@ install(TARGETS
     ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib)
 	
-install(FILES ${PROJECT_HHEADERS} DESTINATION include)
+install(FILES ${MSW_HHEADERS} DESTINATION include/wx/msw)
+install(FILES ${GEN_HHEADERS} DESTINATION include/wx/generic)
+install(FILES ${WXH_HHEADERS} DESTINATION include/wx/html)
+install(FILES ${COMMON_MAIN_HHEADERS} DESTINATION include/wx)
+install(FILES ${COMMON_META_HHEADERS} DESTINATION include/wx/meta)
+install(FILES ${SETUP_HHEADERS} DESTINATION include/wx/msw)

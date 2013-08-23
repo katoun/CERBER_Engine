@@ -9,10 +9,21 @@ set(CMAKE_DEBUG_POSTFIX "_d")
 # Specify build paths
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CERBERGameEngine_SOURCE_DIR}/bin")
 
+#set(CMAKE_INSTALL_PREFIX ${CERBER_GAME_ENGINE_DEPS_DIR})
+#if(MINGW)
+#  set(WX_LIB_DIR_PREFIX gcc)
+#else()
+#  set(WX_LIB_DIR_PREFIX vc)
+#endif()
+#set(wxWidgets_ROOT_DIR ${CERBER_GAME_ENGINE_DEPS_DIR})
+#set(wxWidgets_LIB_DIR ${CERBER_GAME_ENGINE_DEPS_DIR}/lib/${WX_LIB_DIR_PREFIX}_lib)
+#set(wxWidgets_CONFIGURATION msw)
+
 add_executable(Editor ${Editor_SRCS})
 
 find_package(Assimp REQUIRED)
 find_package(Freetype REQUIRED)
+find_package(wxWidgets REQUIRED)
 #find_package(GLM REQUIRED)
 #find_package(OpenGL REQUIRED)
 #find_package(GLEW REQUIRED)
@@ -29,6 +40,7 @@ include_directories(
 	${CERBERGameEngine_SOURCE_DIR}/Engine/include
 	${FREETYPE_INCLUDE_DIRS}
 	${ASSIMP_INCLUDE_DIR}
+	${wxWidgets_INCLUDE_DIRS}
 	#${GLM_INCLUDE_DIR}
 	#${OPENGL_INCLUDE_DIR}
 	#${GLEW_INCLUDE_DIR}
@@ -42,6 +54,7 @@ include_directories(
 target_link_libraries(Editor
 	${FREETYPE_LIBRARIES}
 	${ASSIMP_LIBRARY}
+	${wxWidgets_LIBRARIES}
 	#${OPENGL_LIBRARIES}
 	#${GLEW_LIBRARIES}
 	#${GLFW_LIBRARIES}

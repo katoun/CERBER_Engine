@@ -22,26 +22,32 @@ set( MSW_CSOURCES
     )
 source_group("MSW Sources" FILES ${MSW_CSOURCES})
 
-set(MSW_HHEADERS
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/private/sockmsw.h
+set(MSW_MAIN_HHEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/genrcdefs.h
-    )    
+)
+set(MSW_PRIVATE_HHEADERS
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/msw/private/sockmsw.h
+    )
+set(MSW_HHEADERS ${MSW_MAIN_HHEADERS} ${MSW_PRIVATE_HHEADERS})
 source_group("MSW Headers" FILES ${MSW_HHEADERS})
 
-set(COMMON_HHEADERS
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/protocol/file.h
+set(COMMON_MAIN_HHEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/fs_inet.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/protocol/ftp.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/protocol/http.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/protocol/log.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/protocol/protocol.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/sckaddr.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/sckipc.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/sckstrm.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/socket.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/url.h
+) 
+set(COMMON_PROTOCOL_HHEADERS
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/protocol/file.h
+	${CMAKE_CURRENT_SOURCE_DIR}/include/wx/protocol/ftp.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/protocol/http.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/protocol/log.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/wx/protocol/protocol.h
     )
-source_group("Common Headers" FILES ${COMMON_HHEADERS})    
+set(COMMON_HHEADERS ${COMMON_MAIN_HHEADERS} ${COMMON_PROTOCOL_HHEADERS})
+source_group("Common Headers" FILES ${COMMON_HHEADERS})
 
 set(SETUP_HHEADERS
     #${CMAKE_CURRENT_SOURCE_DIR}/include/wx/univ/setup.h
@@ -68,4 +74,8 @@ install(TARGETS
     ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib)
 	
-install(FILES ${PROJECT_HHEADERS} DESTINATION include)
+install(FILES ${MSW_MAIN_HHEADERS} DESTINATION include/wx/msw)
+install(FILES ${MSW_PRIVATE_HHEADERS} DESTINATION include/wx/msw/private)
+install(FILES ${COMMON_MAIN_HHEADERS} DESTINATION include/wx)
+install(FILES ${COMMON_PROTOCOL_HHEADERS} DESTINATION include/wx/protocol)
+install(FILES ${SETUP_HHEADERS} DESTINATION include/wx/msw)
