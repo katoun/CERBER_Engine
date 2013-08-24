@@ -1,5 +1,6 @@
 set(Engine_HDRS
 	include/Config.h
+	include/Version.h
 	include/Globals.h
 	include/Engine.h
 	include/core/Aabox3d.h

@@ -136,7 +136,7 @@ IF(CMAKE_VERSION VERSION_LESS "2.8.8")
 ENDIF()
 
 IF(NOT CMAKE_BUILD_TYPE)
-    SET(CMAKE_BUILD_TYPE RelWithDebInfo CACHE STRING
+    SET(CMAKE_BUILD_TYPE Release CACHE STRING
         "Choose the type of build, options are: Debug Release RelWithDebInfo MinSizeRel."
         FORCE)
 ENDIF()
@@ -821,6 +821,10 @@ INSTALL(TARGETS ${LIBNAME}
         LIBRARY DESTINATION "lib${LIB_SUFFIX}"
         ARCHIVE DESTINATION "lib${LIB_SUFFIX}"
 )
+
+MESSAGE(STATUS "CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
+MESSAGE(STATUS "CMAKE_DEBUG_POSTFIX: ${CMAKE_DEBUG_POSTFIX}")
+
 INSTALL(FILES include/AL/al.h
               include/AL/alc.h
               include/AL/alext.h
