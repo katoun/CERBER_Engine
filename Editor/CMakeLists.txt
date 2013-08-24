@@ -9,17 +9,16 @@ set(CMAKE_DEBUG_POSTFIX "_d")
 # Specify build paths
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CERBERGameEngine_SOURCE_DIR}/bin")
 
-#set(CMAKE_INSTALL_PREFIX ${CERBER_GAME_ENGINE_DEPS_DIR})
-#if(MINGW)
-#  set(WX_LIB_DIR_PREFIX gcc)
-#else()
-#  set(WX_LIB_DIR_PREFIX vc)
-#endif()
-#set(wxWidgets_ROOT_DIR ${CERBER_GAME_ENGINE_DEPS_DIR})
-#set(wxWidgets_LIB_DIR ${CERBER_GAME_ENGINE_DEPS_DIR}/lib/${WX_LIB_DIR_PREFIX}_lib)
-#set(wxWidgets_CONFIGURATION msw)
+if(WIN32)
+	add_executable(Editor WIN32 ${Editor_SRCS})
+else()
+	add_executable(Editor ${Editor_SRCS})
+endif()
 
-add_executable(Editor ${Editor_SRCS})
+set_target_properties(Editor
+	PROPERTIES 
+    COMPILE_FLAGS "-DCRT_SECURE_NO_DEPRECATE=1 -D_SCL_SECURE_NO_WARNINGS=1 -D_CRT_SECURE_NO_WARNINGS=1"
+)
 
 find_package(Assimp REQUIRED)
 find_package(Freetype REQUIRED)
@@ -65,10 +64,4 @@ target_link_libraries(Editor
 	#${VORBISFILE_LIBRARIES}
 	#${BULLET_LIBRARIES}
 	${EXTRA_LIBS}
-	#TODO: fix this
-	comctl32.lib
-	rpcrt4.lib
-	winmm.lib
-	wsock32.lib
-	#TODO: fix this
 )
