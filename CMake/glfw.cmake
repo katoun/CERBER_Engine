@@ -406,7 +406,7 @@ endif()
 # The library is installed by src/CMakeLists.txt
 #--------------------------------------------------------------------
 if (GLFW_INSTALL)
-    install(DIRECTORY include/GLFW DESTINATION include 
+    install(DIRECTORY include/glfw DESTINATION include 
             FILES_MATCHING PATTERN glfw3.h PATTERN glfw3native.h)
 
     install(FILES ${GLFW_BINARY_DIR}/src/glfwConfig.cmake

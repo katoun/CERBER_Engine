@@ -1,0 +1,70 @@
+# - Try to find OpenAL
+# Once done, this will define
+#
+#  OPENAL_FOUND - system has OpenAL
+#  OPENAL_INCLUDE_DIR - the OpenAL include directory
+#  OPENAL_LIBRARIES - link this to use OpenAL
+
+find_path(OPENAL_INCLUDE_DIR
+	NAMES AL/al.h
+	HINTS
+	NO_DEFAULT_PATH
+	NO_CMAKE_ENVIRONMENT_PATH
+	NO_CMAKE_SYSTEM_PATH
+	NO_SYSTEM_ENVIRONMENT_PATH
+	NO_CMAKE_PATH
+	PATH_SUFFIXES include
+	PATHS ${CERBER_GAME_ENGINE_DEPS_DIR}
+)
+
+find_library(OPENAL_LIBRARY 
+	NAMES OpenAL al openal OpenAL32
+	HINTS
+	NO_DEFAULT_PATH
+	NO_CMAKE_ENVIRONMENT_PATH
+	NO_CMAKE_SYSTEM_PATH
+	NO_SYSTEM_ENVIRONMENT_PATH
+	NO_CMAKE_PATH
+	PATH_SUFFIXES lib
+	PATHS ${CERBER_GAME_ENGINE_DEPS_DIR}
+)
+
+# First search for d-suffixed libs
+find_library(OPENAL_LIBRARY_DEBUG 
+	NAMES OpenALd ald openald OpenAL32d
+	HINTS
+	NO_DEFAULT_PATH
+	NO_CMAKE_ENVIRONMENT_PATH
+	NO_CMAKE_SYSTEM_PATH
+	NO_SYSTEM_ENVIRONMENT_PATH
+	NO_CMAKE_PATH
+	PATH_SUFFIXES lib
+	PATHS ${CERBER_GAME_ENGINE_DEPS_DIR}
+)
+
+if(NOT OPENAL_LIBRARY_DEBUG)
+	# Then search for non suffixed libs if necessary, but only in debug dirs
+	find_library(OPENAL_LIBRARY_DEBUG 
+		NAMES OpenAL al openal OpenAL32
+		HINTS
+		NO_DEFAULT_PATH
+		NO_CMAKE_ENVIRONMENT_PATH
+		NO_CMAKE_SYSTEM_PATH
+		NO_SYSTEM_ENVIRONMENT_PATH
+		NO_CMAKE_PATH
+		PATH_SUFFIXES lib
+		PATHS ${CERBER_GAME_ENGINE_DEPS_DIR}
+	)
+endif()
+
+if(OPENAL_LIBRARY)
+	if(OPENAL_LIBRARY_DEBUG)
+		set(OPENAL_LIBRARIES optimized "${OPENAL_LIBRARY}" debug "${OPENAL_LIBRARY_DEBUG}")
+	else()
+		set(OPENAL_LIBRARIES "${OPENAL_LIBRARY}")		# Could add "general" keyword, but it is optional
+	endif()
+endif()
+
+# handle the QUIETLY and REQUIRED arguments and set XXX_FOUND to TRUE if all listed variables are TRUE
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(OPENAL DEFAULT_MSG OPENAL_LIBRARIES OPENAL_INCLUDE_DIR)

@@ -15,7 +15,7 @@ endif()
 
 # set default .cmake scripts location
 set(CMAKE_MODULE_PATH ${CERBERGameEngine_SOURCE_DIR}/CMake)
-# set default externals install location
+SET(CMAKE_INSTALL_PREFIX ${CERBERGameEngine_SOURCE_DIR})
 set(CMAKE_PREFIX_PATH ${CERBERGameEngine_SOURCE_DIR}/Dependencies)
 
 set(CERBER_GAME_ENGINE_DIR ${CERBERGameEngine_SOURCE_DIR})

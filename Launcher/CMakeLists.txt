@@ -2,13 +2,8 @@ set(Launcher_SRCS
 	src/Launcher.cpp
 )
 
-set(CMAKE_DEBUG_POSTFIX "_d")
-
-# Specify build paths
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CERBERGameEngine_SOURCE_DIR}/bin")
-
 add_executable(Launcher ${Launcher_SRCS})
-
+set_target_properties(Launcher PROPERTIES DEBUG_POSTFIX "_d")
 
 find_package(OpenGL REQUIRED)
 find_package(GLFW REQUIRED)
@@ -25,3 +20,9 @@ target_link_libraries(Launcher
 	${GLFW_LIBRARIES}
 	${EXTRA_LIBS}
 )
+
+install(TARGETS 
+    Launcher
+    RUNTIME DESTINATION bin
+    ARCHIVE DESTINATION lib
+    LIBRARY DESTINATION lib)

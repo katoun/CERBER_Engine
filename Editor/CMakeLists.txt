@@ -11,16 +11,13 @@ set(Editor_SRCS
 
 set(CMAKE_CXX_FLAGS_COVERAGE "${CMAKE_CXX_FLAGS_RELEASE} -fprofile-arcs -ftest-coverage")
 
-set(CMAKE_DEBUG_POSTFIX "_d")
-
-# Specify build paths
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CERBERGameEngine_SOURCE_DIR}/bin")
-
 if(WIN32)
 	add_executable(Editor WIN32 ${Editor_SRCS} ${Editor_HDRS})
 else()
 	add_executable(Editor ${Editor_SRCS} ${Editor_HDRS})
 endif()
+
+set_target_properties(Editor PROPERTIES DEBUG_POSTFIX "_d")
 
 set_target_properties(Editor
 	PROPERTIES 
@@ -45,3 +42,9 @@ target_link_libraries(Editor
 	${wxWidgets_LIBRARIES}
 	${EXTRA_LIBS}
 )
+
+install(TARGETS 
+    Editor
+    RUNTIME DESTINATION bin
+    ARCHIVE DESTINATION lib
+    LIBRARY DESTINATION lib)
