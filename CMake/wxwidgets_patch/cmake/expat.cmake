@@ -34,3 +34,7 @@ set_target_properties(${EXPATLIB_NAME}
     PROJECT_LABEL ${PROJECT_NAME}
     COMPILE_FLAGS "-D_LIB -D_CRT_SECURE_NO_WARNINGS -DCOMPILED_FROM_DSP"
 )
+
+include(BuildUtils)
+
+install_external_lib_debug_pdb(${EXPATLIB_NAME}${EXPATLIB_DEBUG_POSTFIX} ${WX_OUTPUT_PATH})

@@ -77,3 +77,7 @@ install(TARGETS
     RUNTIME DESTINATION bin
     ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib)
+	
+include(BuildUtils)
+
+install_external_lib_debug_pdb(${TIFFLIB_NAME}${TIFFLIB_DEBUG_POSTFIX} ${WX_OUTPUT_PATH})

@@ -52,3 +52,7 @@ install(TARGETS
     RUNTIME DESTINATION bin
     ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib)
+	
+include(BuildUtils)
+
+install_external_lib_debug_pdb(${PNGLIB_NAME}${PNGLIB_DEBUG_POSTFIX} ${WX_OUTPUT_PATH})

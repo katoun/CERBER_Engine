@@ -1,17 +1,19 @@
-set(Engine_HDRS
+set(ENGINELIB_NAME Engine)
+
+set(Engine_BASE_FILES
 	include/Config.h
 	include/Version.h
 	include/Globals.h
 	include/Engine.h
+	src/Engine.cpp
+)
+
+set(Engine_CORE_FILES
 	include/core/Aabox3d.h
 	include/core/Plane3d.h
 	include/core/Sphere3d.h
 	include/core/Math.h
 	include/core/Utils.h
-)
-
-set(Engine_SRCS
-	src/Engine.cpp
 	src/core/Aabox3d.cpp
 	src/core/Plane3d.cpp
 	src/core/Sphere3d.cpp
@@ -19,9 +21,11 @@ set(Engine_SRCS
 	src/core/Utils.cpp
 )
 
+source_group("core" FILES ${Engine_CORE_FILES})
+
 set(CMAKE_DEBUG_POSTFIX "_d")
 
-add_library(Engine SHARED ${Engine_SRCS} ${Engine_HDRS})
+add_library(${ENGINELIB_NAME} SHARED ${Engine_BASE_FILES} ${Engine_CORE_FILES})
 
 add_definitions(-DENGINE_DLL)
 
@@ -48,7 +52,7 @@ include_directories(
 	${PNG_INCLUDE_DIR}
 	${BULLET_INCLUDE_DIR}
 )
-target_link_libraries(Engine
+target_link_libraries(${ENGINELIB_NAME}
 	${OPENGL_LIBRARIES}
 	${GLEW_LIBRARIES}
 	${OPENAL_LIBRARY}
@@ -60,8 +64,12 @@ target_link_libraries(Engine
 	${EXTRA_LIBS}
 )
 
-install(TARGETS 
-    Engine
+install(TARGETS
+    ${ENGINELIB_NAME}
     RUNTIME DESTINATION bin
     ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib)
+	
+include(BuildUtils)
+
+add_vcproj_specific_settings(${ENGINELIB_NAME})

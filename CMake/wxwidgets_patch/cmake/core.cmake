@@ -1019,3 +1019,7 @@ install(FILES ${COMMON_PROPGRID_HHEADERS} DESTINATION include/wx/propgrid)
 install(FILES ${COMMON_PERSIST_HHEADERS} DESTINATION include/wx/persist)
 install(FILES ${COMMON_XRC_HHEADERS} DESTINATION include/wx)
 install(FILES ${SETUP_HHEADERS} DESTINATION include/wx/msw)
+
+include(BuildUtils)
+
+install_external_lib_debug_pdb(${LIB_MOUTNAME}${LIB_DEBUG_POSTFIX} ${WX_OUTPUT_PATH})

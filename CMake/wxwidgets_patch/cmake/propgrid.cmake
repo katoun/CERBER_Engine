@@ -63,3 +63,7 @@ install(TARGETS
 install(FILES ${MSW_HHEADERS} DESTINATION include/wx/msw)
 install(FILES ${COMMON_HHEADERS} DESTINATION include/wx/propgrid)
 install(FILES ${SETUP_HHEADERS} DESTINATION include/wx/msw)
+
+include(BuildUtils)
+
+install_external_lib_debug_pdb(${LIB_MOUTNAME}${LIB_DEBUG_POSTFIX} ${WX_OUTPUT_PATH})
